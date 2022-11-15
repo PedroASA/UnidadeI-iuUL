@@ -1,0 +1,15 @@
+Nome do Cliente:
+CPF:
+Data de Nascimento:
+Renda Mensal:
+Estado Civil:
+Dependentes:
+
+Usu rio
+Nome do Cliente:			ï»¿Cliente Nome
+CPF:			11111111111
+Data de Nascimento:			01/01/2000 00:00:00
+Renda Mensal:			1000000,06
+Estado Civil:			SOLTEIRO
+Dependentes:			2
+

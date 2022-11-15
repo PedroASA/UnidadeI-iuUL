@@ -1,0 +1,52 @@
+Nome do Cliente:
+Erro: Nome do Cilente deve ter ao menos 5 letras. 4 foram informadas
+Nome do Cliente:
+Erro: Nome do Cilente deve ter ao menos 5 letras. 2 foram informadas
+Nome do Cliente:
+Erro: Nome do Cilente deve ter ao menos 5 letras. 3 foram informadas
+Nome do Cliente:
+Erro: Nome do Cilente deve ter ao menos 5 letras. 4 foram informadas
+Nome do Cliente:
+CPF:
+Erro: Cpf do Cilente deve ter 11 d°gitos. 1 d°gitos informados
+CPF:
+Erro: Cpf do Cilente deve ter 11 d°gitos. 8 d°gitos informados
+CPF:
+Erro: Valor informado n∆o Ç sequencia de d°gitos
+Input string was not in a correct format.
+CPF:
+Erro: Valor informado n∆o Ç sequencia de d°gitos
+Value was either too large or too small for a UInt64.
+CPF:
+Data de Nascimento:
+Erro: Data Informada n∆o Ç v†lida
+Year, Month, and Day parameters describe an un-representable DateTime.
+Data de Nascimento:
+Erro: Idade do Cilente deve ser ao menos 18 anos. Idade dada: 12,873196869794308
+Data de Nascimento:
+Renda Mensal:
+Erro: Valor informado n∆o Ç sequencia de d°gitos
+Input string was not in a correct format.
+Renda Mensal:
+Estado Civil:
+Erro: Estado Civil informado Ç inv†lido.
+Estado Civil deve conter apenas um caracter!
+Estado Civil:
+Erro: Estado Civil informado Ç inv†lido.
+Entrada Inv†lida. Estado Civil deve ser {C | S | V | D}
+Estado Civil:
+Dependentes:
+Erro: Valor informado n∆o Ç sequencia de d°gitos
+Value was either too large or too small for a UInt32.
+Dependentes:
+Erro: N£mero de dependentes do Cilente deve ser no m†ximo 10. N£mero informado: 11
+Dependentes:
+
+Usu†rio
+Nome do Cliente:               pedro
+CPF:               10000000000
+Data de Nascimento:          10/10/1996
+Renda Mensal:            23123,12
+Estado Civil:               VIUVO
+Dependentes:                   5
+
