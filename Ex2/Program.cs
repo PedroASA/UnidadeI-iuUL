@@ -4,19 +4,21 @@ namespace Ex2
 {
     internal class Program
     {
-        static void Main(string[] args)
+        // Evitar Warning do Compilador
+        #pragma warning disable IDE0060
+        internal static void Main(string[] args)
         {
-            Vertice v1 = new Vertice(1.0, 1.0);
-            Vertice v2 = new Vertice(1.0, 0.0);
+            // Testa os métodos públicos implementados em Vertice.cs
+            Vertice v1 = new (0.0, 0.0);
+            Vertice v2 = new (-2.5, -2.5);
             Console.WriteLine("{0}\t{1}", v1, v2);
             Console.WriteLine(v1.Equals(v2));
 
             Console.WriteLine(v1.Distancia(v2));
 
-            v2.Move(1.0,1.0);
+            v2.Move(0.0,0.0);
             Console.WriteLine(v1);
             Console.WriteLine(v1.Equals(v2));
-
         }
     }
 }

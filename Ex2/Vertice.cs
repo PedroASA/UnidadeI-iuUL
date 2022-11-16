@@ -2,37 +2,47 @@
 
 namespace Ex2
 {
+    // A classe é publica pois será usada em outro namespace (Projeto 3)
     public class Vertice
     {
         // leitura pública e escrita privada
-        public double y { get; private set; }
-        public double x { get; private set; }
+        public double X { get; private set; }
+        public double Y { get; private set; }
         public Vertice(double x, double y)
         {
-            (this.x, this.y) = (x, y);
+            (this.X, this.Y) = (x, y);
         }
 
+        // Raiz Quadrada { (x1 - x2)^2 + (y1 - y2)^2 }
         public double Distancia(Vertice that)
             => Math.Sqrt(
-                Math.Pow(this.x - that.x, 2)
-                + Math.Pow(this.y - that.y, 2));
+                Math.Pow(this.X - that.X, 2)
+                + Math.Pow(this.Y - that.Y, 2));
 
 
         public void Move(double x, double y)
         {
-            (this.x, this.y) = (x, y);
+            (this.X, this.Y) = (x, y);
         }
 
+        // Método para comparar dois Triângulos
         public override bool Equals(object obj)
-            => obj is Vertice && this == (Vertice)obj;
+            => obj is Vertice that && this == that;
 
+        // Usado depois para imprimir os Vértices
         public override string ToString()
-            => $"({x}, {y})";
+            => $"({X}, {Y})";
 
+        // Usado depois no Projeto 3, no método Triangulo.Equals
         public static bool operator ==(Vertice v1, Vertice v2)
-            => (v1.x == v2.x) && (v1.y == v2.y);
+            => (v1.X == v2.X) && (v1.Y == v2.Y);
 
+        // A linguagem obriga a implementação dos dois operadores
         public static bool operator !=(Vertice v1, Vertice v2)
             => !(v1 == v2);
+
+        // Evitar Warnings do Compilador
+        public override int GetHashCode()
+            => base.GetHashCode();
     }
 }
