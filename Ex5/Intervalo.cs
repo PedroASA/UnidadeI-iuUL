@@ -2,17 +2,19 @@
 
 namespace Ex5
 {
+#pragma warning disable CS0659 // O tipo substitui Object. Equals (objeto o), mas não substitui o Object.GetHashCode()
     public class Intervalo
+#pragma warning restore CS0659 // O tipo substitui Object. Equals (objeto o), mas não substitui o Object.GetHashCode()
     {
         public readonly DateTime inicial, final;
 
         public readonly TimeSpan Duracao;
 
-    public Intervalo(DateTime inicial, DateTime final) 
+        public Intervalo(DateTime inicial, DateTime final)
         {
             if (inicial > final)
             {
-                throw new Exception(String.Format("Exception: Data inicial deve ser anterior à data final do intervalo\nErro: {0} > {1}", inicial, final));
+                throw new Exception(String.Format("Erro: Data inicial deve ser anterior à data final do intervalo\n\t{0} > {1}", inicial, final));
             }
             this.inicial = inicial;
             this.final = final;
@@ -30,6 +32,7 @@ namespace Ex5
                 || (this.inicial <= i.final && i.final <= this.final);
         }
 
+        // Método para verificar se dois intervalos são iguais
         public override bool Equals(object obj)
         {
             if (obj.GetType() != this.GetType()) return false;

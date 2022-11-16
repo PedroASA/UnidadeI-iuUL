@@ -4,8 +4,11 @@ namespace Ex5
 {
     internal class Program
     {
-        static void Main(string[] args)
+#pragma warning disable IDE0060 // Remover o parâmetro não utilizado
+        internal static void Main(string[] args)
+#pragma warning restore IDE0060 // Remover o parâmetro não utilizado
         {
+            // Testa funcionamento da classe Intervalo
             try
             {
                 Intervalo i = new(new DateTime(2010, 1, 1, 8, 0, 15), new DateTime(2010, 1, 1, 8, 0, 10));
