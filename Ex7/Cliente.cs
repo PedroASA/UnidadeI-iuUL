@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Ex7
 {
 
     internal class Cliente
     {
+        // Backing Fields
         private string _nome;
         private ulong _cpf;
         private DateTime _dataDeNascimento;
         private uint _dependentes;
         internal string Nome
         {
+            // Verifica que nome tem 5 ou mais caracteres (letras, números, char especiais, etc).
             set
             {
                 if (value.Length >= 5)
@@ -22,13 +23,14 @@ namespace Ex7
                 }
                 else
                 {
-                    throw new InvalidClientException(String.Format("Nome do Cilente deve ter ao menos 5 letras. {0} foram informadas", value.Length));
+                    throw new InvalidClientException(String.Format("Nome do Cilente deve ter ao menos 5 caracteres. {0} foram informadas", value.Length));
                 }
             }
             private get => _nome;
         }
         internal ulong Cpf
         {
+            // Verifica que cpf tem 11 dígitos, não incluindo zeros à esquerda
             set
             {
                 int tmp = value.ToString().Length;
@@ -46,6 +48,7 @@ namespace Ex7
 
         internal DateTime DataDeNascimento
         {
+            // Verifica que idade maior ou igual a dezoito (Aproximação)
             set
             {
                 double age = (DateTime.Now - value).TotalDays / 365.2425;
@@ -64,6 +67,7 @@ namespace Ex7
         internal TipoEstadoCivil EstadoCivil { private get; set; }
         internal uint Dependentes
         {
+            // Verifica que dependentes é no máximo 10
             private get => this._dependentes;
             set
             {
@@ -86,14 +90,15 @@ namespace Ex7
             DIVORCIADO
         }
 
+        // Usado para imprimir informações do usuário
         public override string ToString()
         {
             string[] x = {"Nome do Cliente:", "CPF:", "Data de Nascimento:", "Renda Mensal:", "Estado Civil:", "Dependentes:"};
-            object[] y = {Nome, Cpf, DataDeNascimento.ToString("d", DateTimeFormatInfo.InvariantInfo), RendaMensal.ToString("0.00"), EstadoCivil, Dependentes};
+            object[] y = {Nome, Cpf.ToString(CultureInfo.InvariantCulture), DataDeNascimento.ToString("d", DateTimeFormatInfo.InvariantInfo), RendaMensal.ToString("0.00"), EstadoCivil, Dependentes};
 
             return x
-                .Zip(y, (first, second) => $"{first, -10}{second, 20}\n")
-                .Aggregate("\nUsuário\n", (acc, x) => acc + x);
+                .Zip(y, (first, second) => $"{first, -25}{second, 15}\n")
+                .Aggregate("\n\nUsuário\n", (acc, x) => acc + x);
         }
 
         internal class InvalidClientException : Exception
