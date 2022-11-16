@@ -44,10 +44,7 @@ namespace Ex6
             int index = -1;
             for (int j = 0; j < intervalos.Count; j++)
             {
-                /*
-                 * Basta ordenar por inícial, visto que dois intervalos 
-                 * não podem ter o mesmo inicial (não tem interseção).
-                 */
+                // Ordenada por inicial
                 if (intervalos[j].inicial > tmp)
                 {
                     index = j;

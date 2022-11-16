@@ -1,12 +1,15 @@
 ﻿using System;
 using Ex5;
+
 namespace Ex6
 {
     internal class Program
     {
-        static void Main(string[] args)
+#pragma warning disable IDE0060 // Remover o parâmetro não utilizado
+        internal static void Main(string[] args)
+#pragma warning restore IDE0060 // Remover o parâmetro não utilizado
         {
-            ListaIntervalo li = new ListaIntervalo();
+            ListaIntervalo li = new ();
 
             bool tmp;
 
@@ -16,6 +19,7 @@ namespace Ex6
 
             Console.WriteLine(tmp);
 
+            // Tem Interseção com o intervalo acima
             tmp = li.Add(new Intervalo(
                 new DateTime(2010, 1, 1, 8, 0, 15),
                 new DateTime(2010, 1, 1, 8, 0, 18)));
