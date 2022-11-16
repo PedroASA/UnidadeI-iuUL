@@ -3,7 +3,11 @@
 namespace Ex2
 {
     // A classe é publica pois será usada em outro namespace (Projeto 3)
+#pragma warning disable CS0659 // O tipo substitui Object. Equals (objeto o), mas não substitui o Object.GetHashCode()
+#pragma warning disable CS0661 // O tipo define os operadores == ou !=, mas não substitui o Object.GetHashCode()
     public class Vertice
+#pragma warning restore CS0661 // O tipo define os operadores == ou !=, mas não substitui o Object.GetHashCode()
+#pragma warning restore CS0659 // O tipo substitui Object. Equals (objeto o), mas não substitui o Object.GetHashCode()
     {
         // leitura pública e escrita privada
         public double X { get; private set; }
@@ -40,9 +44,5 @@ namespace Ex2
         // A linguagem obriga a implementação dos dois operadores
         public static bool operator !=(Vertice v1, Vertice v2)
             => !(v1 == v2);
-
-        // Evitar Warnings do Compilador
-        public override int GetHashCode()
-            => base.GetHashCode();
     }
 }

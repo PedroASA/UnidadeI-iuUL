@@ -4,7 +4,9 @@ using Ex2;
 
 namespace Ex3
 {
+#pragma warning disable CS0659 // O tipo substitui Object. Equals (objeto o), mas não substitui o Object.GetHashCode()
     internal class Triangulo
+#pragma warning restore CS0659 // O tipo substitui Object. Equals (objeto o), mas não substitui o Object.GetHashCode()
     {
         internal Vertice V1 { get; private set; }
         internal Vertice V2 { get; private set; }
@@ -99,9 +101,5 @@ namespace Ex3
                 : base(message)
             { }
         }
-
-        // Evitar Warnings do Compilador
-        public override int GetHashCode()
-            => base.GetHashCode();
     }
 }

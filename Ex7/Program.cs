@@ -5,7 +5,8 @@ namespace Ex7
 {
     internal class Program
     {
-
+        // Evitar Warning do Compilador
+        #pragma warning disable IDE0060
         internal static void Main(string[] args)
         { 
             Cliente c = new();
