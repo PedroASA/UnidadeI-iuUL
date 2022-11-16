@@ -1,86 +1,107 @@
 ﻿using System;
+// usar classe Vertice do projeto anterior
 using Ex2;
 
-public class Triangulo
+namespace Ex3
 {
-	public Vertice v1{ get; private set; }
-    public Vertice v2 { get; private set; }
-    public Vertice v3 { get; private set; }
+    internal class Triangulo
+    {
+        internal Vertice V1 { get; private set; }
+        internal Vertice V2 { get; private set; }
+        internal Vertice V3 { get; private set; }
 
-    public double perimetro { get; private set; }
+        internal double Perimetro { get; private set; }
 
-    public enum Tipo {
-        EQUILATERO, ISOSCELES, ESCALENO
-    };
-    public Tipo tipo { get; private set; }
-
-    public double area { get; private set; }
-
-    private double lado1, lado2, lado3;
-    public Triangulo(Vertice v1, Vertice v2, Vertice v3)
-	{
-        if(!IsTriangulo(v1, v2, v3))
+        internal enum TipoTriangulo
         {
-            throw new InvalidTrianguloException(String.Format("Exception: Os vértices {0}, {1}, {2} não formam um triangulo.", v1, v2, v3));
+            EQUILATERO, ISOSCELES, ESCALENO
+        };
+        internal TipoTriangulo Tipo { get; private set; }
+
+        internal double Area { get; private set; }
+
+        private readonly double lado1, lado2, lado3;
+
+
+
+        // Construtor inicializa todos os campos do Objeto
+        internal Triangulo(Vertice v1, Vertice v2, Vertice v3)
+        {
+            if (!IsTriangulo(v1, v2, v3))
+            {
+                throw new InvalidTrianguloException(String.Format("Erro: Os vértices {0}, {1}, {2} não formam um triangulo.", v1, v2, v3));
+            }
+
+            (this.V1, this.V2, this.V3) = (v1, v2, v3);
+
+            (lado1, lado2, lado3) = (v1.Distancia(v2), v2.Distancia(v3), v3.Distancia(v1));
+
+            Perimetro = lado1 + lado2 + lado3;
+
+            Area = CalcArea();
+
+            Tipo = CalcTipo();
         }
 
-        (this.v1, this.v2, this.v3) = (v1, v2, v3);
+        /*
+         * Método para verificar se dois triangulos são iguais.
+         * Dois triângulos são iguais se seus vértice são iguais
+         */
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != this.GetType()) return false;
 
-        (lado1, lado2, lado3) = (v1.Distancia(v2), v2.Distancia(v3), v3.Distancia(v1));
+            var that = (Triangulo)obj;
+            return (this.V1, this.V2, this.V3) == (that.V1, that.V2, that.V3);
+        }
 
-        perimetro = lado1 + lado2 + lado3;
+        // Formula do Enunciado
+        private double CalcArea()
+        {
+            var s = Perimetro / 2;
 
-        area = CalcArea();
+            return Math.Sqrt(s * (s - lado1) * (s - lado2) * (s - lado3));
+        }
 
-        tipo = CalcTipo();
+        /*
+         * Verifica se área do triângulo é diferente de zero, ou seja, se o triangulo existe.
+         * 
+         *  Area = |(x2−x1)(y3−y1)−(y2−y1)(x3−x1)|
+         *  https://math.stackexchange.com/a/937781
+         */
+        private static bool IsTriangulo(Vertice v1, Vertice v2, Vertice v3)
+        {
+            var (x1, x2, x3) = (v1.X, v2.X, v3.X);
+            var (y1, y2, y3) = (v1.Y, v2.Y, v3.Y);
 
-	}
+            double a = x1 * (y2 - y3)
+                + x2 * (y3 - y1)
+                + x3 * (y1 - y2);
 
-    public override bool Equals(object obj)
-    {
-        if (obj.GetType() != this.GetType()) return false;
+            return a != 0;
+        }
 
-        var that = (Triangulo)obj;
-        return (this.v1, this.v2, this.v3) == (that.v1, that.v2, that.v3);
-    }
-    
-    private double CalcArea()
-    {
-        var s = perimetro / 2;
+        private TipoTriangulo CalcTipo()
+        {
+            var (eq1, eq2) = (lado1 == lado2, lado2 == lado3);
 
-        return Math.Sqrt(s * (s - lado1) * (s - lado2) * (s - lado3));
-    }
+            if (eq1 && eq2)
+                return TipoTriangulo.EQUILATERO;
+            else if (eq1 || eq2 || lado3 == lado1)
+                return TipoTriangulo.ISOSCELES;
+            else
+                return TipoTriangulo.ESCALENO;
+        }
 
-    // Checa se área do triângulo é diferente de zero, ou seja, se o triangulo existe.
-    private static bool IsTriangulo(Vertice v1, Vertice v2, Vertice v3)
-    {
-        var (x1, x2, x3) = (v1.x, v2.x, v3.x);
-        var (y1, y2, y3) = (v1.y, v2.y, v3.y);
+        internal class InvalidTrianguloException : Exception
+        { 
+            internal InvalidTrianguloException(string message)
+                : base(message)
+            { }
+        }
 
-        double a = x1 * (y2 - y3)
-            + x2 * (y3 - y1)
-            + x3 * (y1 - y2);
-
-        return a != 0;
-    }
-
-    private Tipo CalcTipo()
-    {
-        var (eq1, eq2) = (lado1 == lado2, lado2 == lado3);
-
-        if (eq1 && eq2)
-            return Tipo.EQUILATERO;
-        else if (eq1 || eq2 || lado3 == lado1)
-            return Tipo.ISOSCELES;
-        else
-            return Tipo.ESCALENO;
-    }
-
-    private class InvalidTrianguloException : Exception
-    {
-
-        public InvalidTrianguloException(string message)
-            : base(message)
-        { }
+        // Evitar Warnings do Compilador
+        public override int GetHashCode()
+            => base.GetHashCode();
     }
 }
