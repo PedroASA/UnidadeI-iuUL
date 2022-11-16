@@ -9,6 +9,7 @@ namespace Ex4
     {
         private readonly List<Vertice> vertices;
 
+        // Propriedade para retornar o número de vértices do polígono
         internal int N
         {
             get => vertices.Count;
