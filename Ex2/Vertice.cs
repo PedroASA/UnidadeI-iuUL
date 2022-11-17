@@ -29,7 +29,7 @@ namespace Ex2
             (this.X, this.Y) = (x, y);
         }
 
-        // Método para comparar dois Triângulos
+        // Método para comparar dois Vértices
         public override bool Equals(object obj)
             => obj is Vertice that && this == that;
 
