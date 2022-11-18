@@ -1,0 +1,72 @@
+Nome do Cliente:
+CPF:
+Data de Nascimento:
+Renda Mensal:
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+
+
+Usu rio
+Nome do Cliente:         ï»¿Cliente Nome
+CPF:                         40633105660
+Data de Nascimento:           01/01/2000
+Renda Mensal:                 1000000,00
+Estado Civil:                          C
+Dependentes:                           0
+

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Ex1": {
+      "commandName": "Project",
+      "commandLineArgs": "< \"$(ProjectDir)cliente.txt\" > \"$(ProjectDir)cliente-out.txt\""
+    }
+  }
+}

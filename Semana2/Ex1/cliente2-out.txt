@@ -1,0 +1,20 @@
+Nome do Cliente:
+CPF:
+Data de Nascimento:
+Renda Mensal:
+Estado Civil:
+Dependentes:
+Erro => Campo: Data De Nascimento   Valor: 01/01/2005		 Mensagem:           Idade do Cilente deve ser ao menos 18 anos.
+Erro => Campo: Renda Mensal         Valor: 10,000		 Mensagem: Renda Mesnsal deve ser nÆo negativo e possuir at‚ duas casas decimais separadas por v¡rgula
+Data de Nascimento:
+Renda Mensal:
+
+
+Usu rio
+Nome do Cliente:              ï»¿Pedro A
+CPF:                         23334072045
+Data de Nascimento:           01/01/2004
+Renda Mensal:                      25,00
+Estado Civil:                          S
+Dependentes:                           0
+
