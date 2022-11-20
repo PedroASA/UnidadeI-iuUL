@@ -7,7 +7,7 @@ namespace Ex4
 
         private readonly string nome;
 
-        private CertidaoNascimento Certidao { get; set; }
+        private CertidaoNascimento certidao;
 
         internal Pessoa(string nome) 
         {
@@ -16,12 +16,15 @@ namespace Ex4
 
         internal void SetCertidao(DateTime d)
         {
-            Certidao = new(this, d);
+            if (certidao is null)
+                this.certidao = new(this, d);
+            else
+                throw new Exception("Certidão é imutável");
         }
 
         public override string ToString()
         {
-            return $"{nome}\t{(Certidao == null ? "N/A" : Certidao)}";
+            return $"{nome}\t{(certidao == null ? "N/A" : this.certidao)}";
         }
 
         // Certidão de Nascimento só pode ser criada
