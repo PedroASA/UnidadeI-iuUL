@@ -1,0 +1,6 @@
+﻿prop1=a
+prop2=bs
+prop0=fas
+prop3=jhg
+prop5=dfg
+

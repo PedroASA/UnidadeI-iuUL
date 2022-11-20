@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Ex7": {
+      "commandName": "Project",
+      "commandLineArgs": " \"$(ProjectDir)propriedades.txt\" \"$(ProjectDir)propriedades-out.txt\""
+    }
+  }
+}
