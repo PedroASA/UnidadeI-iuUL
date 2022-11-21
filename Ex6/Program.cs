@@ -6,37 +6,37 @@ namespace Ex6
     {
         static void Main(string[] args)
         {
-            ProgressaoAritmetica pa = new(3, 4);
 
-            for (int i = 0; i < 10; ++i)
+            Progressao[] progressoes = { new ProgressaoAritmetica(3, 4), new ProgressaoGeometrica(3, 4) };
+
+            foreach (var prog in progressoes)
             {
-                Console.Write($"{pa.ProximoValor} ");
+                for (int i = 0; i < 10; ++i)
+                {
+                    Console.Write($"{prog.ProximoValor} ");
+                }
+                Console.WriteLine();
             }
 
-            Console.WriteLine();
-
-            ProgressaoGeometrica pg = new(3, 4);
-
-            for (int i = 0; i < 10; ++i)
+            foreach (var prog in progressoes)
             {
-                Console.Write($"{pg.ProximoValor} ");
+                prog.Reinicializar();
+                for (int i = 0; i < 10; ++i)
+                {
+                    Console.Write($"{prog.ProximoValor} ");
+                }
+                Console.WriteLine();
             }
 
-            Console.WriteLine();
+            Progressao[] progs2 = { new ProgressaoAritmetica(progressoes[0].TermoAt(10), 4), new ProgressaoGeometrica(progressoes[1].TermoAt(10), 4) };
 
-            pa.Reinicializar();
-
-            for (int i = 0; i < 4; ++i)
+            foreach (var prog in progs2)
             {
-                Console.Write($"{pa.ProximoValor} ");
-            }
-            Console.WriteLine();
-
-            pg.Reinicializar();
-
-            for (int i = 0; i < 4; ++i)
-            {
-                Console.Write($"{pg.ProximoValor} ");
+                for (int i = 0; i < 2; ++i)
+                {
+                    Console.Write($"{prog.ProximoValor} ");
+                }
+                Console.WriteLine();
             }
         }
     }

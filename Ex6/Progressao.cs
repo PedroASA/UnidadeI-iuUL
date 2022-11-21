@@ -18,6 +18,7 @@ namespace Ex6
         {
             Primeiro = primeiro;
             Razao = razao;
+            ProximoValor = primeiro;
         }
 
         public abstract int TermoAt(int posicao);

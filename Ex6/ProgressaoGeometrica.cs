@@ -9,10 +9,7 @@ namespace Ex6
     internal class ProgressaoGeometrica : Progressao
     {
         public ProgressaoGeometrica(int primeiro, int razao) 
-            : base(primeiro, razao)     
-        {
-            ProximoValor = primeiro;
-        }
+            : base(primeiro, razao) { }
 
         private int _proximoValor;
 
@@ -24,12 +21,13 @@ namespace Ex6
                 _proximoValor = tmp * Razao;
                 return tmp;
             }
-            protected set
+            protected set 
             {
                 _proximoValor = value;
             }
         }
 
+        // a0 * (1-q^n)/(1-q)
         public override int TermoAt(int posicao)
         {
             return Primeiro 
