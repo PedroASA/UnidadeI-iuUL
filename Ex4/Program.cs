@@ -11,6 +11,10 @@ namespace Ex4
             p.SetCertidao(new DateTime(2000, 1, 1));
 
             Console.WriteLine(p);
+
+            Pessoa _p = new("Pessoa A");
+
+            Console.WriteLine(_p);
         }
     }
 }

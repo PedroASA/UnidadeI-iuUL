@@ -14,6 +14,7 @@ namespace Ex4
             this.nome = nome;
         }
 
+        // Adicionar Certidão de Nascimento
         internal void SetCertidao(DateTime d)
         {
             if (certidao is null)
@@ -24,11 +25,11 @@ namespace Ex4
 
         public override string ToString()
         {
-            return $"{nome}\t{(certidao == null ? "N/A" : this.certidao)}";
+            return $"Nome: {nome}\nCertidão: {(certidao == null ? "N/A" : this.certidao)}";
         }
 
         // Certidão de Nascimento só pode ser criada
-        // pela classe Pessoa. Assim, uma 
+        // pela classe Pessoa.
         private class CertidaoNascimento
         {
             private readonly DateTime dataDeEmissao;
@@ -43,7 +44,7 @@ namespace Ex4
 
             public override string ToString()
             {
-                return $"{dataDeEmissao}";
+                return $"\n\tTitular: {p.nome}\n\tData de Emissão: {dataDeEmissao}";
             }
         }
     }
