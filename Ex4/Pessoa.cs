@@ -29,7 +29,7 @@ namespace Ex4
         }
 
         // Certidão de Nascimento só pode ser criada
-        // pela classe Pessoa.
+        // pela classe Pessoa. (Construtor Privado)
         private class CertidaoNascimento
         {
             private readonly DateTime dataDeEmissao;
