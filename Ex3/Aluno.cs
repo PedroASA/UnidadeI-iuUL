@@ -8,13 +8,20 @@ namespace Ex3
     {
         internal string Nome { get; private set; }
 
-        private static int cnt = 0;
+        // Contador para gerar matrícula única
+        private static ulong cnt = 0;
 
-        internal int Matricula { get; private set; }
+        internal ulong Matricula { get; private set; }
 
-        internal Turma turma { get; set; }
 
-        private static int GetMatricula()
+        /* Não usado. Há confilto nos seguintes pontos:
+         * 
+         *  - Um aluno pode estar associado a uma turma ou não, mas somente a uma turma.
+         *  - (o mesmo aluno não pode ser inserido duas vezes na mesma turma, mas pode estar em mais de uma turma). 
+         */
+        internal Turma Turma { get; set; }
+
+        private static ulong GetMatricula()
         {
             return cnt++;
         }

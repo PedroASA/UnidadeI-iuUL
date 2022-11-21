@@ -19,14 +19,15 @@ namespace Ex3
             this.nome = nome;
         }
 
-        // Adicionar um aluno já existente
+        // Adicionar um aluno já criado
         internal bool MatricularAluno(Aluno a)
         {
             return alunos.Add(a);
         }
 
-        // Remover um aluno se estiver inscrito
-        internal bool RemoverAluno(int matricula)
+        // Remover um aluno se estiver inscrito no curso 
+        // e não estiver associado a nenhuma turma
+        internal bool RemoverAluno(ulong matricula)
         {
             if (TryGetAluno(matricula, out Aluno _a))
             {
@@ -38,8 +39,8 @@ namespace Ex3
             return false;
         }
 
-        // Inserir um aluno já inscrito no curso a uma turma já existente
-        internal bool InserirAlunoTurma(int codigo, int matricula)
+        // Inserir um aluno já inscrito no curso a uma turma do curso
+        internal bool InserirAlunoTurma(ulong codigo, ulong matricula)
         {
             if (TryGetTurma(codigo, out Turma _t))
             {
@@ -49,8 +50,8 @@ namespace Ex3
             return false;
         }
 
-        // Remover aluno já inscrito no curso a uma turma já existente
-        internal bool RemoverAlunoTurma(int codigo, int matricula)
+        // Remover aluno já inscrito no curso de uma turma do curso
+        internal bool RemoverAlunoTurma(ulong codigo, ulong matricula)
         {
             if (TryGetTurma(codigo, out Turma _t))
             {
@@ -63,14 +64,14 @@ namespace Ex3
         }
 
         // Cria Turma do zero
-        internal bool CriarTurma(int codigo)
+        internal bool CriarTurma(ulong codigo)
         {
             return turmas.Add(new Turma(codigo));
         }
 
         // Remover uma turma do curso, se ela estiver inscrita no curso
-        // e nenhuma aluno estiver inscrito nela
-        internal bool RemoverTurma(int codigo)
+        // e nenhum aluno estiver inscrito nela
+        internal bool RemoverTurma(ulong codigo)
         {
 
             if (TryGetTurma(codigo, out Turma _t))
@@ -82,7 +83,7 @@ namespace Ex3
         }
 
         // Listar alunos de uma turma
-        internal string ListarTurma(int codigo)
+        internal string ListarTurma(ulong codigo)
         {
 
             if (TryGetTurma(codigo, out Turma _t))
@@ -100,7 +101,7 @@ namespace Ex3
                 .Aggregate($"\n\nTurmas do curso {nome}:\n", (acc,e) => acc + "\n" + e + "\n");
         }
 
-        private bool TryGetAluno(int matricula, out Aluno a)
+        private bool TryGetAluno(ulong matricula, out Aluno a)
         {
             var t = alunos.Where(a => a.Matricula == matricula);
             if (t.Count() == 1)
@@ -114,7 +115,7 @@ namespace Ex3
 
         }
 
-        private bool TryGetTurma(int codigo, out Turma t)
+        private bool TryGetTurma(ulong codigo, out Turma t)
         {
             var tmp = turmas.Where(_t => _t.Codigo == codigo);
             if (tmp.Count() == 1)

@@ -8,13 +8,14 @@ namespace Ex3
     {
         private readonly HashSet<Aluno> alunos = new();
 
-        private static readonly HashSet<int> cods = new();
+        // Guardar todos os códigos de Turmas
+        private static readonly HashSet<ulong> cods = new();
 
         // Backing Field
-        private int _codigo;
+        private ulong _codigo;
 
-        // Único
-        internal int Codigo { 
+        // O código passado (pelo construtor somente) deve ser único
+        internal ulong Codigo { 
             get => _codigo; 
             private set
             {
@@ -30,10 +31,8 @@ namespace Ex3
             get => alunos.Count;
         }
 
-        internal Turma(int cod)
+        internal Turma(ulong cod)
         {
-            // Check Code
-            // Generate Exception
             this.Codigo = cod;
         }
 
@@ -57,7 +56,7 @@ namespace Ex3
             return obj is Turma turma && this == turma;
         }
 
-        internal bool Contains(int matricula)
+        internal bool Contains(ulong matricula)
         {
             return alunos
                 .Where(a => a.Matricula == matricula)
