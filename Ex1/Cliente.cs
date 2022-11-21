@@ -44,10 +44,14 @@ namespace Ex1
 
         internal DateTime DataDeNascimento
         {
-            // Verifica que idade maior ou igual a dezoito (Aproximação)
+            // Verifica que idade maior ou igual a dezoito
+            // https://pt.stackoverflow.com/a/157496
             set
             {
-                double age = (DateTime.Now - value).TotalDays / 365.2425;
+                var today = DateTime.Now;
+                var age = today.Year - value.Year;
+                if (value > today.AddYears(-age)) age--;
+
                 if (age >= 18)
                 {
                     this._dataDeNascimento = value;
@@ -65,6 +69,7 @@ namespace Ex1
             private get => this._rendaMensal;
 
             // Verifica que renda mensal é maior ou igual a zero
+            // inútil - Já é verificado em TipoRendaMensal.Parse()
             set
             {
                 if(value < 0 )
@@ -125,17 +130,14 @@ namespace Ex1
          */
         internal readonly struct TipoRendaMensal
         {
-            private static readonly NumberFormatInfo nfi = new CultureInfo("pt-BR", false).NumberFormat;
 
+            // Padrões aceitos {0,00 | 0 | 0,0 | 000000}
             private static readonly Regex rx = new (@"^\s*\d+(,\d\d?)?\s*$", RegexOptions.Compiled);
 
-            static TipoRendaMensal() {
-                nfi.NumberDecimalDigits = 2;
-            }
             internal static float Parse(string s)
             {
                 if (rx.IsMatch(s))
-                    return float.Parse(s, nfi);
+                    return float.Parse(s);
                 else
                     throw new InvalidClientException("Renda Mensal", s, "Renda Mesnsal deve ser não negativo e possuir até duas casas decimais separadas por vírgula");
             }

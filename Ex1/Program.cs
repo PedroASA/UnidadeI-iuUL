@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
-//using System.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace Ex1
 {
@@ -76,19 +76,21 @@ namespace Ex1
                         GetInput(tempClient, i);
                 }
 
-                // Verificar as entradas passadas pros campos ainda não aceitos
-                for (int i = 0; i < done.Length; i++)
-                {
-                    if (!done[i])
-                        Check(c, tempClient, done, i);
-                }
+                //// Verificar as entradas passadas pros campos ainda não aceitos
+                //for (int i = 0; i < done.Length; i++)
+                //{
+                //    if (!done[i])
+                //        Check(c, tempClient, done, i);
+                //}
 
                 // Verificar as entradas passadas pros campos ainda não aceitos - paralelamente
-                //Parallel.For(0, done.Length,
-                //   index => {
-                //       if (!done[index])
-                //           Check(c, tempClient, done, index);
-                //   });
+                // As mensagens de erro podem sair em uma ordem diferente da leitura dos campos
+                Parallel.For(0, done.Length,
+                   index =>
+                   {
+                       if (!done[index])
+                           Check(c, tempClient, done, index);
+                   });
 
             } while (done.Any(x => !x));
 
@@ -127,7 +129,9 @@ namespace Ex1
             || e is ArgumentOutOfRangeException || e is InvalidEstadoCivilException
             || e is FormatException || e is ArgumentException)
             {
-                Console.WriteLine(Cliente.InvalidClientException.MakeMessage(messages[index].Remove(messages[index].Length - 1), inputs[index], e.Message));
+                Console.WriteLine(
+                    Cliente.InvalidClientException
+                    .MakeMessage(messages[index].Remove(messages[index].Length - 1), inputs[index], e.Message));
             }
             catch (Exception e)
             {
