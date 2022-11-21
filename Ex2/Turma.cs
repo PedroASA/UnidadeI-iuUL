@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex2
 {
+    // Assume que um aluno só pode estar em uma turma
     internal class Turma
     {
-        private readonly List<Aluno> alunos = new List<Aluno>();
+        private readonly HashSet<Aluno> alunos = new ();
 
+        // Medias de P1, P2 e Final
         private (float, float, float) Avgs
         {
             set { }
@@ -29,6 +29,7 @@ namespace Ex2
             }
         }
 
+        // Aluno com maior nota final
         private Aluno Best
         {
             set { }
@@ -36,36 +37,23 @@ namespace Ex2
             get => alunos
                 .Aggregate(alunos.First(),
                 (acc, x) => acc.NotaFinal > x.NotaFinal ? acc : x);
-
-
         }
 
         internal bool Add(Aluno aluno)
         {
-            if (!alunos.Contains(aluno))
-            {
-                alunos.Add(aluno);
-                return true;
-            }
-            return false;
+            return alunos.Add(aluno);
         }
 
         internal bool Remove(Aluno aluno)
         {
-            if (alunos.Contains(aluno))
-            {
-                alunos.Remove(aluno);
-                return true;
-            }
-            return false;
+            return alunos.Remove(aluno);
         }
 
         internal bool PutP1(Aluno aluno, float nota)
         {
-            if (alunos.Contains(aluno))
+            if (alunos.TryGetValue(aluno, out aluno))
             {
-                alunos.Where(x => x == aluno).First()
-                    .NotaP1 = nota;
+                aluno.NotaP1 = nota;
                 return true;
             }
             return false;
@@ -73,10 +61,9 @@ namespace Ex2
 
         internal bool PutP2(Aluno aluno, float nota)
         {
-            if (alunos.Contains(aluno))
+            if (alunos.TryGetValue(aluno, out aluno))
             {
-                alunos.Where(x => x == aluno).First()
-                    .NotaP2 = nota;
+                aluno.NotaP2 = nota;
                 return true;
             }
             return false;
@@ -103,7 +90,7 @@ namespace Ex2
             Console.WriteLine($"| {t.Item1,-10} | {t.Item2,10} | {t.Item3,15} |");
 
             Console.WriteLine("\nMelhor Aluno:");
-            Console.WriteLine($"| {"Nome",-25} | {"Matricula",-10} | {"P1",5} | {"P2",10} | {"NF",15} |");
+            Console.WriteLine($"| {"Nome",-25} | {"Matricula",-10} | {"P1",5} | {"P2",10} | {"NF",15} |\n");
             Console.WriteLine(Best);
 
         }

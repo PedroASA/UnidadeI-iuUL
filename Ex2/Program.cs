@@ -19,17 +19,17 @@ namespace Ex2
             t.PutP1(new Aluno("Nome1", "mat1"), 10f);
             t.PutP2(new Aluno("Nome1", "mat1"), 10f);
 
-            t.PutP1(new Aluno("", "mat2"), 9.7f);
-            t.PutP2(new Aluno("", "mat2"), 1.5f);
+            t.PutP1(new Aluno("Nome2", "mat2"), 9.7f);
+            t.PutP2(new Aluno("Nome2", "mat2"), 1.5f);
 
-            t.PutP1(new Aluno("", "mat3"), 5.3f);
-            t.PutP2(new Aluno("", "mat3"), 5.7f);
+            t.PutP1(new Aluno("Nome3", "mat3"), 5.3f);
+            t.PutP2(new Aluno("Nome3", "mat3"), 5.7f);
 
-            t.PutP1(new Aluno("", "mat4"), 3.0f);
-            t.PutP2(new Aluno("", "mat4"), 5.0f);
+            t.PutP1(new Aluno("Nome4", "mat4"), 3.0f);
+            t.PutP2(new Aluno("Nome4", "mat4"), 5.0f);
 
-            t.PutP1(new Aluno("", "mat6"), 8.0f);
-            t.PutP2(new Aluno("", "mat6"), 8.0f);
+            t.PutP1(new Aluno("Nome6", "mat6"), 8.0f);
+            t.PutP2(new Aluno("Nome6", "mat6"), 8.0f);
 
             t.PrintTurma();
 

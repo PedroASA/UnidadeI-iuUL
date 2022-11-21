@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex2
 {
+    // Assume que um aluno só pode estar em uma turma
     internal class Aluno
     {
         internal readonly string matricula, nome;
@@ -34,7 +31,7 @@ namespace Ex2
 
         public static bool operator ==(Aluno al1, Aluno al2)
         {
-            return al1.matricula == al2.matricula;
+            return (al1.nome, al1.matricula) == (al2.nome, al2.matricula);
         }
 
         public static bool operator !=(Aluno al1, Aluno al2)
@@ -44,7 +41,7 @@ namespace Ex2
 
         public override int GetHashCode()
         {
-            return 0;
+            return HashCode.Combine(nome, matricula);
         }
         public override string ToString()
         {
