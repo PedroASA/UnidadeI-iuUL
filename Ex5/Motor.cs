@@ -8,6 +8,7 @@ namespace Ex5
 {
     internal class Motor
     {
+        // Monitorar quais motores estão em quais carros
         private static readonly Dictionary<Motor, Carro> motorToCarro = new();
 
         internal readonly float cilindrada;
@@ -22,8 +23,9 @@ namespace Ex5
                 }
                 return null;
             }
+            // Chamada pelo método set da propriedade Motor da classe Carro
             set {
-                if (motorToCarro.TryGetValue(this, out Carro _c))
+                if (motorToCarro.TryGetValue(this, out _))
                     throw new Exception("Motor não pode ser alocado a dois carros diferentes");
                 motorToCarro[this] = value;
             }
