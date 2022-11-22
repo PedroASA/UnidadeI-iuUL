@@ -20,14 +20,6 @@ Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependent
 Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
 Estado Civil:
 Dependentes:
-Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
-Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
-Estado Civil:
-Dependentes:
-Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
-Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
-Estado Civil:
-Dependentes:
 Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
 Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
 Estado Civil:
@@ -36,16 +28,8 @@ Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependent
 Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
 Estado Civil:
 Dependentes:
-Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
 Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
-Estado Civil:
-Dependentes:
-Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
-Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
-Estado Civil:
-Dependentes:
 Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
-Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
 Estado Civil:
 Dependentes:
 Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
@@ -58,6 +42,22 @@ Estado Civil:
 Dependentes:
 Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
 Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Estado Civil:
+Dependentes:
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Estado Civil:
+Dependentes:
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor:     a		 Mensagem:                    Requested value 'a' was not found.
+Erro => Campo: Dependentes          Valor:    -1		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
+Estado Civil:
+Dependentes:
+Erro => Campo: Estado Civil         Valor: asdsa		 Mensagem:                Requested value 'asdsa' was not found.
+Erro => Campo: Dependentes          Valor:    11		 Mensagem: N£mero de dependentes do Cilente deve ser no m ximo 10 e ao menos zero.
 Estado Civil:
 Dependentes:
 
