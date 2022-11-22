@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidacaoCliente", "Ex1\ValidacaoCliente.csproj", "{F63E05E4-AA8D-4978-A0D3-1FBA4A967E2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidacaoCliente", "ValidacaoCliente\ValidacaoCliente.csproj", "{F63E05E4-AA8D-4978-A0D3-1FBA4A967E2B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{23B8CEE8-D546-4C50-BFEB-2FF92D0204D1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Turma", "Ex2\Turma.csproj", "{1EDCB041-0ABE-4194-973F-3FCE1100630C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Turma", "Turma\Turma.csproj", "{1EDCB041-0ABE-4194-973F-3FCE1100630C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Curso", "Ex3\Curso.csproj", "{92728B2C-BC2A-471F-8E79-42EFD78D2BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Curso", "Curso\Curso.csproj", "{92728B2C-BC2A-471F-8E79-42EFD78D2BF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CertidaoNascimento", "Ex4\CertidaoNascimento.csproj", "{FD8ED92A-BF10-4F4B-B664-FDADB8B3439E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CertidaoNascimento", "CertidaoNascimento\CertidaoNascimento.csproj", "{FD8ED92A-BF10-4F4B-B664-FDADB8B3439E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carro", "Ex5\Carro.csproj", "{8425F74B-5376-431D-8B3F-C09EFAE961C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carro", "Carro\Carro.csproj", "{8425F74B-5376-431D-8B3F-C09EFAE961C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Progressao", "Ex6\Progressao.csproj", "{09DF8C1D-B2A2-4AFD-A514-5D6B52ACFE77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Progressao", "Progressao\Progressao.csproj", "{09DF8C1D-B2A2-4AFD-A514-5D6B52ACFE77}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Propriedades", "Ex7\Propriedades.csproj", "{E3A530F7-8D5C-448C-8587-2F6DF12405E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Propriedades", "Propriedades\Propriedades.csproj", "{E3A530F7-8D5C-448C-8587-2F6DF12405E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
