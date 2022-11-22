@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Ex1
@@ -54,8 +56,6 @@ namespace Ex1
 
 
 
-        // Evitar Warning do Compilador
-#pragma warning disable IDE0060
         internal static void Main(string[] args)
         {
             Cliente c = new();
@@ -66,6 +66,8 @@ namespace Ex1
             // Marca quais campos já foram aceitos
             bool[] done = new bool[6];
 
+            Task[] readTask = new Task[6];
+
             // Enquanto existir pelo menos um campo não válido
             do
             {
@@ -73,23 +75,19 @@ namespace Ex1
                 for (int i = 0; i < done.Length; i++)
                 {
                     if (!done[i])
-                        GetInput(tempClient, i);
+                        readTask[i] = GetInput(tempClient, i);
                 }
 
-                //// Verificar as entradas passadas pros campos ainda não aceitos
-                //for (int i = 0; i < done.Length; i++)
-                //{
-                //    if (!done[i])
-                //        Check(c, tempClient, done, i);
-                //}
-
                 // Verificar as entradas passadas pros campos ainda não aceitos - paralelamente
-                // As mensagens de erro podem sair em uma ordem diferente da leitura dos campos
+                //// As mensagens de erro podem sair em uma ordem diferente da leitura dos campos
                 Parallel.For(0, done.Length,
                    index =>
                    {
+                       readTask[index].Wait();
                        if (!done[index])
+                       {
                            Check(c, tempClient, done, index);
+                       }
                    });
 
             } while (done.Any(x => !x));
@@ -97,20 +95,20 @@ namespace Ex1
             Console.WriteLine(c);
         }
 
-        private static void GetInput(in string[] tempClient, int index)
+        private static async Task GetInput(string[] tempClient, int index)
         {
             // Escreve qual campo está sendo solicitado, baseado na variável @messages
-            Console.WriteLine(messages[index]);
+            await Console.Out.WriteLineAsync(messages[index]);
 
             // Lê linha da entrada
-            var linha = Console.ReadLine();
+            var linha = await Console.In.ReadLineAsync();
 
             // Armazena entrada em uma variável temporária
             tempClient[index] = linha;
         }
 
         // Verifica se entrada passada é válida
-        private static void Check(in Cliente c, in string[] inputs, in bool[] done, int index)
+        private static void Check(Cliente c, string[] inputs, bool[] done, int index)
         {
             try
             {
