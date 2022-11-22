@@ -13,13 +13,20 @@ namespace Ex3
 
         internal ulong Matricula { get; private set; }
 
+        internal Turma _turma = null;
 
-        /* Não usado. Há confilto nos seguintes pontos:
-         * 
-         *  - Um aluno pode estar associado a uma turma ou não, mas somente a uma turma.
-         *  - (o mesmo aluno não pode ser inserido duas vezes na mesma turma, mas pode estar em mais de uma turma). 
-         */
-        internal Turma Turma { get; set; }
+        internal Turma Turma 
+        { 
+            get => _turma; 
+            set
+            {
+                if (_turma is null || value is null)
+                {
+                    _turma = value;
+                }
+                else throw new Exception("Aluno não pode estar em duas turmas");
+            }
+        }
 
         private static ulong GetMatricula()
         {

@@ -17,8 +17,6 @@ namespace Ex3
             c.MatricularAluno(new Aluno("Aluno6"));
             c.MatricularAluno(new Aluno("Aluno7"));
 
-            // Rever Geração de Matrícula Única
-            // Match Nome to Mat - HashTable
             c.RemoverAluno(5);
 
             c.CriarTurma(1);
@@ -34,7 +32,14 @@ namespace Ex3
             c.InserirAlunoTurma(3, 5);
             c.InserirAlunoTurma(3, 4);
             c.InserirAlunoTurma(3, 2);
-            c.InserirAlunoTurma(3, 3);
+            c.InserirAlunoTurma(3, 0);
+            try
+            {
+                c.InserirAlunoTurma(3, 3);
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
 
             c.RemoverAlunoTurma(3, 2);

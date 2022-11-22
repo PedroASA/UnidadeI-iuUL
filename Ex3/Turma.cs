@@ -65,11 +65,13 @@ namespace Ex3
 
         internal bool InserirAluno(Aluno a)
         {
+            a.Turma = this;
             return alunos.Add(a);
         }
 
         internal bool RemoverAluno(Aluno a)
         {
+            a.Turma = null;
             return alunos.Remove(a);
         }
 
