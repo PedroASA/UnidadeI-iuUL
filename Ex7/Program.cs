@@ -11,7 +11,7 @@ namespace Ex7
 
             p.AddKey("Vasco", "Da Gama");
 
-            p.GetValue("Vasco", out string _val);
+            p.TryGetValue("Vasco", out string _val);
 
             Console.WriteLine(_val);
 
@@ -35,7 +35,6 @@ namespace Ex7
             {
                 Console.WriteLine(e.Message);
             }
-
             p.WriteToFile(args[1]).Wait();
         }
     }

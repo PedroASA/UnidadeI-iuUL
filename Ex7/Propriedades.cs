@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
@@ -8,29 +8,37 @@ namespace Ex7
 {
     internal class Propriedades
     {
-        private readonly Dictionary<string, string> propriedades = new();
+        private readonly ConcurrentDictionary<string, string> propriedades = new();
 
         internal Propriedades() { }
 
         internal Propriedades(string path)
         {
-            ReadFile(path);
+            ReadFile(path).Wait();
         }
 
-        private void ReadFile(string path)
+        private async Task ReadFile(string path)
         {
-            Parallel.ForEach(System.IO.File.ReadLines(path),
+            // Ler todas as linhas async
+            var lines = await File.ReadAllLinesAsync(path);
+
+            // Processar linhas em paralelo
+            lines.AsParallel().ForAll(
                 line =>
                 {
+                    // Ignorar comentários no arquivo properties
+                    if (line.Length != 0 && line[0] == '#')
+                        return;
+
                     var tmp = line.Split('=');
                     if (tmp.Length == 2)
                     {
                         AddKey(tmp[0], tmp[1]);
                     }
-                }); 
+                });
         }
 
-        internal bool GetValue(string key, out string _val)
+        internal bool TryGetValue(string key, out string _val)
         {
             return propriedades.TryGetValue(key, out _val);
         }
@@ -50,11 +58,11 @@ namespace Ex7
 
         internal void AddKey(string key, string value)
         {
-            if(Contains(key))
+            if (Contains(key))
             {
                 throw new Exception("Chave já existe");
             }
-            propriedades.Add(key, value);
+            propriedades.TryAdd(key, value);
         }
 
         internal async Task WriteToFile(string path)
@@ -62,8 +70,10 @@ namespace Ex7
             var lines =
                 propriedades
                 .Keys
-                .Zip(propriedades.Values, (k, v) => k + "=" + v);
+                .AsParallel()
+                .Zip(propriedades.Values.AsParallel(), (k, v) => k + "=" + v);
 
+            // Escrever todas as linhas async
             await File.WriteAllLinesAsync(path, lines);
         }
     }
