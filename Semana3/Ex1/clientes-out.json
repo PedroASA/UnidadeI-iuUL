@@ -1,0 +1,82 @@
+[
+  {
+    "Dados": {
+      "Nome": null,
+      "Cpf": 0,
+      "DataDeNascimento": "1982-09-13T00:00:00",
+      "RendaMensal": 1835.27,
+      "EstadoCivil": 1,
+      "Dependentes": 0
+    },
+    "Erros": [
+      "Campo: Nome Valor:  Joao Mensagem: Nome do Cilente deve ter ao menos 5 caracteres",
+      "Campo: Cpf Valor: 39401787050 Mensagem: Cpf do Cilente deve ter dígitos verficadores válidos"
+    ]
+  },
+  {
+    "Dados": {
+      "Nome": "Leticia Andrade",
+      "Cpf": 0,
+      "DataDeNascimento": "1999-01-14T00:00:00",
+      "RendaMensal": 4261.39,
+      "EstadoCivil": 0,
+      "Dependentes": 1
+    },
+    "Erros": [
+      "Campo: Cpf Valor: 25950526081 Mensagem: Cpf do Cilente deve ter dígitos verficadores válidos"
+    ]
+  },
+  {
+    "Dados": {
+      "Nome": "Paula da Silva",
+      "Cpf": 80519936086,
+      "DataDeNascimento": "0001-01-01T00:00:00",
+      "RendaMensal": 3578.1,
+      "EstadoCivil": 1,
+      "Dependentes": 1
+    },
+    "Erros": [
+      "Campo: Data de Nascimento Valor: 29/02/1981 Mensagem: Formato de data inválido"
+    ]
+  },
+  {
+    "Dados": {
+      "Nome": "Mateus Pereira",
+      "Cpf": 61461811023,
+      "DataDeNascimento": "1978-05-12T00:00:00",
+      "RendaMensal": 0,
+      "EstadoCivil": 2,
+      "Dependentes": 2
+    },
+    "Erros": [
+      "Campo: Renda Mensal Valor:    -1 Mensagem: Renda Mensal deve se adequar ao padrão 0.00, sendo positivo"
+    ]
+  },
+  {
+    "Dados": {
+      "Nome": "Vania Castro",
+      "Cpf": 0,
+      "DataDeNascimento": "1965-11-09T00:00:00",
+      "RendaMensal": 6852.27,
+      "EstadoCivil": 0,
+      "Dependentes": 3
+    },
+    "Erros": [
+      "Campo: Cpf Valor: 54303344050 Mensagem: Cpf do Cilente deve ter dígitos verficadores válidos",
+      "Campo: Estado Civil Valor:     X Mensagem: Estado Civil deve ser {C|V|D|S}"
+    ]
+  },
+  {
+    "Dados": {
+      "Nome": "Wagner Peixoto",
+      "Cpf": 91490575022,
+      "DataDeNascimento": "1968-02-22T00:00:00",
+      "RendaMensal": 11387.37,
+      "EstadoCivil": 3,
+      "Dependentes": 0
+    },
+    "Erros": [
+      "Campo: Dependentes Valor:    -1 Mensagem: Dependentes deve ser no máximo 10 e no mínimo 0"
+    ]
+  }
+]

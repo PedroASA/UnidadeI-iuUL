@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Ex2": {
+      "commandName": "Project",
+      "commandLineArgs": " \"$(ProjectDir)texto.txt\" \"$(ProjectDir)ignore.txt\" "
+    }
+  }
+}
