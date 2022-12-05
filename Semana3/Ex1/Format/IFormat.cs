@@ -2,10 +2,11 @@
 
 namespace Ex1.Format
 {
-    public interface IFormat
+    public interface IFormat<I, O>
     {
-        public string Encode(object obj);
+        public string Encode(O obj);
 
-        public Queue<string> Decode(string json);
+        public I Decode(string json);
+
     }
 }

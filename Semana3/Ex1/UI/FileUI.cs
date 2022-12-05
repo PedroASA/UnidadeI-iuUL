@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 
+/*
+ * Implementa métodos Read e Write para interação com um ou dois arquivo
+ */
+
 namespace Ex1.UI
 {
     internal class FileUI : IUserInterface
@@ -10,20 +14,16 @@ namespace Ex1.UI
 
         private readonly StreamWriter sw;
 
-        private readonly Queue<string> seq;
+        private readonly string input;
 
-        private readonly IFormat format;
-
-        public FileUI(string inFile, string outFile, IFormat format)
+        public FileUI(string inFile, string outFile)
         {
             sr = new StreamReader(inFile);
             sw = new StreamWriter(outFile);
 
-            this.format = format;
+            input = sr.ReadToEnd();
 
-            string json = sr.ReadToEnd();
             sr.Close();
-            seq = format.Decode(json);
         }
 
         ~FileUI()
@@ -34,21 +34,19 @@ namespace Ex1.UI
         public void WriteOut(object obj)
         {
 
-            sw.Write(format.Encode(obj));
+            sw.Write(obj);
             sw.Flush();
         }
 
         public string Read()
         {
-            if ((seq.TryDequeue(out string tmp)))
-                return tmp;
-            return "EOT";
+            return input;
         }
 
         public void WriteErr(object obj)
         {
 
-            sw.Write(format.Encode(obj));
+            sw.Write(obj);
             sw.Flush();
         }
     }

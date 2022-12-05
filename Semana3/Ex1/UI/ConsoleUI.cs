@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
+/*
+ * Implementa métodos Read e Write para interação com o Console
+ */
 
 namespace Ex1.UI
 {

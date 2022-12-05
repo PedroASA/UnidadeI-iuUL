@@ -1,10 +1,13 @@
-﻿namespace Ex1.Cliente
+﻿namespace Ex1.ClienteNamespace
 {
-    public enum TipoEstadoCivil
+    public partial class Cliente
     {
-        C,
-        S,
-        V,
-        D
+        public enum TipoEstadoCivil
+        {
+            C,
+            S,
+            V,
+            D
+        }
     }
 }

@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using TipoClienteBuilder = Ex1.Cliente.ClienteBuilder;
-using TipoCliente = Ex1.Cliente.Cliente;
+using Ex1.ClienteNamespace;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+
+/*
+ * Classe Responsável pela lógica de Serialização e Deserialização do Input e Output
+ */
 
 namespace Ex1.Format
 {
-    public class JsonFormat : IFormat
+    public class JsonFormat : IFormat<Queue<Input>, List<(Input, Cliente.ClienteBuilder)>>
     {
 
-        public string Encode(object output)
+        public string Encode(List<(Input, Cliente.ClienteBuilder)> output)
         {
             try
             {
-                var tmp = (List<TipoClienteBuilder>)output;
 
-                var t = tmp.Select(x=> new Output(x)).ToList();
-
-                var options = new JsonSerializerOptions { Encoder = JavaScriptEncoder.Create(UnicodeRanges.All), WriteIndented = true };
-                return System.Text.Json.JsonSerializer.Serialize<List<Output>>(t, options);
+                var options = new JsonSerializerOptions { Encoder = JavaScriptEncoder.Create(UnicodeRanges.All), WriteIndented = true, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault };
+                return System.Text.Json.JsonSerializer.Serialize<List<Output>>(output.Select(x=> new Output(x)).ToList(), options);
             }
             catch (Exception)
             {
@@ -30,51 +31,47 @@ namespace Ex1.Format
             }
         }
 
-        public Queue<string> Decode(string json)
+        public Queue<Input> Decode(string json)
         {
             var clientes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Input>>(json);
 
-            var q = new Queue<string>();
-
-            foreach (var cliente in clientes)
-            {
-                q.Enqueue(cliente.Nome);
-                q.Enqueue(cliente.Cpf);
-                q.Enqueue(cliente.DataDeNascimento);
-                q.Enqueue(cliente.RendaMensal);
-                q.Enqueue(cliente.EstadoCivil);
-                q.Enqueue(cliente.Dependentes);
-            }
+            var q = new Queue<Input>(clientes);
 
             return q;
         }
+    }
 
-        private struct Output
+    public struct Output
+    {
+        public Input Dados { get; set; }
+        public Dictionary<string, string> Erros { get; set; }
+
+        public Output((Input, Cliente.ClienteBuilder) t)
         {
-            public TipoCliente Dados { get; set; }
-            public string[] Erros { get; set; }
+            this.Dados = t.Item1;
 
-            public Output(TipoClienteBuilder t)
+            this.Erros = new Dictionary<string, string>();
+
+            foreach (var e in t.Item2.Erros.Where(x => x is not null))
             {
-                this.Dados = Newtonsoft.Json.JsonConvert.DeserializeObject<TipoCliente>(t.ToJson());
-                this.Erros = t.Erros.Where(x => x is not null).ToArray();
+                Erros.Add(e.Campo, e.Mensagem);
             }
         }
+    }
 
-        private struct Input
-        {
-            [JsonProperty("nome")]
-            public string Nome { get; set; }
-            [JsonProperty("cpf")]
-            public string Cpf { get; set; }
-            [JsonProperty("dt_nascimento")] 
-            public string DataDeNascimento { get; set; }
-            [JsonProperty("renda_mensal")]
-            public string RendaMensal { get; set; }
-            [JsonProperty("estado_civil")]
-            public string EstadoCivil { get; set; }
-            [JsonProperty("dependentes")]
-            public string Dependentes { get; set; }
-        }
+    public struct Input
+    {
+        [JsonProperty("nome")]
+        public string Nome { get; set; }
+        [JsonProperty("cpf")]
+        public string Cpf { get; set; }
+        [JsonProperty("dt_nascimento")]
+        public string DataDeNascimento { get; set; }
+        [JsonProperty("renda_mensal")]
+        public string RendaMensal { get; set; }
+        [JsonProperty("estado_civil")]
+        public string EstadoCivil { get; set; }
+        [JsonProperty("dependentes")]
+        public string Dependentes { get; set; }
     }
 }

@@ -1,11 +1,17 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Ex1.UI;
-using TipoClienteBuilder = Ex1.Cliente.ClienteBuilder;
+using Ex1.ClienteNamespace;
+using System;
+
+/*
+ * Controlador que interage com os objetos ConsoleUI
+ * Implementa a criação de um cliente a partir da interação com o console
+ */
 
 namespace Ex1.Controller
 {
-    internal class InteractiveClienteController : ClienteController
+    internal class ConsoleController : ClienteController
     {
         /* 
         * As mensagens a serem impressas na interação com o usuário.
@@ -21,12 +27,33 @@ namespace Ex1.Controller
                 "Dependentes:"
         };
 
-        public InteractiveClienteController(IUserInterface userInterface)
+        private static readonly Action<Cliente.ClienteBuilder, string>[] actions =
+            {
+                // Set Nome
+                (cB, line) => {cB.SetNome(line);},
+
+                // Set CPF
+                (cB, line) => { cB.SetCpf(line); },
+
+                // Set Data de Nascimento
+                (cB, line) => { cB.SetDataDeNascimento(line); },
+
+                // Set Renda Mensal
+                (cB, line) => { cB.SetRendaMensal(line); },
+
+                // Set Estado Civil
+                (cB, line) => { cB.SetEstadoCivil(line); },
+
+                // Set Dependentes
+                (cB, line) => { cB.SetDependentes(line); }
+        };
+
+        public ConsoleController(ConsoleUI userInterface)
             : base(userInterface) { }
 
         public override void ReadAndWrite()
         {
-            TipoClienteBuilder builder = new();
+            Cliente.ClienteBuilder builder = new();
 
             // Enquanto existir pelo menos um campo não válido
             do
@@ -43,7 +70,7 @@ namespace Ex1.Controller
             userInterface.WriteOut(builder.TryBuild());
         }
 
-        private void ProcessField(TipoClienteBuilder cB, int index)
+        private void ProcessField(Cliente.ClienteBuilder cB, int index)
         {
             // Escreve qual campo está sendo solicitado, baseado na variável @messages
             userInterface.WriteOut(messages[index]);

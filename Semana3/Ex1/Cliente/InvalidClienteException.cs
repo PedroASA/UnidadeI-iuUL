@@ -1,22 +1,34 @@
-﻿using System;
-using System.Text;
-using System.Text.Json;
+﻿using Newtonsoft.Json;
+using System;
 
-namespace Ex1.Cliente
+namespace Ex1.ClienteNamespace
 {
-    /* 
-    * Exceções da forma
-    *  Erro => Campo: $campo   Valor: $valor   Mensagem: $mensagem
-    */
-    public class InvalidClienteException : Exception
+    public partial class Cliente
     {
-        public InvalidClienteException(string fieldName, object val, string message)
-            : base(MakeMessage(fieldName, val, message))
-        { }
-
-        internal static string MakeMessage(string fieldName, object val, string message)
+        /* 
+        * Exceções da forma
+        *  Erro => Campo: $campo   Valor: $valor   Mensagem: $mensagem
+        */
+        public class InvalidClienteException : Exception
         {
-            return $"Campo: {fieldName} Valor: {(val.ToString().Length == 0 ? "N/A" : val),5} Mensagem: {message}";
+            public string Campo { get; set; }
+            public object Val { get; set; }
+            public string Mensagem { get; set; }
+
+
+            public InvalidClienteException(string fieldName, object val, string message)
+                : base(MakeMessage(fieldName, val, message))
+            {
+                Campo = fieldName;
+                Val = val;
+                Mensagem = message;
+            
+            }
+
+            internal static string MakeMessage(string fieldName, object val, string message)
+            {
+                return $"Campo: {fieldName} Valor: {(val.ToString().Length == 0 ? "N/A" : val),5} Mensagem: {message}";
+            }
         }
     }
 }

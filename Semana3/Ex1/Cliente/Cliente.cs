@@ -1,24 +1,24 @@
-﻿using System;
+﻿using Ex1.Format;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net.Security;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
-namespace Ex1.Cliente
+namespace Ex1.ClienteNamespace
 {
-    public class Cliente
+    public partial class Cliente
     {
-        public string Nome { get; set; }
-        public ulong Cpf { get; set; }
-        public DateTime DataDeNascimento { get; set; }
-        public float RendaMensal { get; set; }
-        public TipoEstadoCivil EstadoCivil { get; set; }
-        public int Dependentes { get; set; }
+        public string Nome { get; private set; }
+        public ulong Cpf { get; private set; }
+        public DateTime DataDeNascimento { get; private set; }
+        public float RendaMensal { get; private set; }
+        public TipoEstadoCivil EstadoCivil { get; private set; }
+        public int Dependentes { get; private set; }
 
-        internal Cliente() { }
+        private Cliente() { }
 
         // Usado para imprimir informações do cliente
         public override string ToString()
@@ -29,13 +29,6 @@ namespace Ex1.Cliente
             return x
                 .Zip(y, (first, second) => $"{first,-25}{second,15}\n")
                 .Aggregate("\n\nUsuário\n", (acc, x) => acc + x);
-        }
-
-        public string ToJson()
-        {
-            
-            var options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) };
-            return JsonSerializer.Serialize<Cliente>(this, options);
         }
     }
 }
