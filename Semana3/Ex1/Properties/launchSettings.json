@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Ex1": {
-      "commandName": "Project",
-      "commandLineArgs": " \"$(ProjectDir)clientes.json\" \"$(ProjectDir)clientes-test-out.json\" "
-    }
-  }
-}
