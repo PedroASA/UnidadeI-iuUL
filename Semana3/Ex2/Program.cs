@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
-using System.Text.RegularExpressions;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Ex2
 {

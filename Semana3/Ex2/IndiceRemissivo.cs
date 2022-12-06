@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -12,74 +9,85 @@ namespace Ex2
 {
     internal class IndiceRemissivo
     {
+        // Mapeia palavras do texto e as linhas em que aparecem
+        private readonly SortedDictionary<string, List<int>> wordsMap =new();
 
-        private SortedDictionary<string, SortedSet<int>> wordsMap =new();
+        // Conjunto de palavras a serem ignoradas
+        private HashSet<string> ignoredWords = new();
 
-        private HashSet<string> ignoredWords =new();
-
+        // Padrão de palavra a ser aceito
         private static readonly string pattern = "[A-Z]+([" + Regex.Escape(".,;<>:\\/|~^\'\"[]{}‘“!@#$%&*()_+=") + "][A-Z]+)*";
 
-        internal IndiceRemissivo(string pathTXT, string pathIgnore ="")
+        private readonly Task waitRead;
+
+        internal IndiceRemissivo(string pathTXT, string pathIgnore = null)
         {
-            if(pathIgnore !="") readIgnored(pathIgnore);
-            readText(pathTXT);
+            if (pathIgnore is not null) ReadIgnored(pathIgnore).Wait();
+            this.waitRead = ReadText(pathTXT);
         }
 
-        private string[] GetWords(string text)
+        // Coleta as palavras do texto
+        private static string[] GetWords(string text)
         {
             return Regex.Matches(text, pattern).Cast<Match>().Select(m => m.Value).ToArray();
         }
 
-        private void readText(string path)
+        // Lê arquivo de texto, converte todas as letras para maiúsculas e armazena em $wordsMap, se não for uma palavra a ser ignorada
+        private async Task ReadText(string path)
         {
-            //try
-            //{
-                var lines = File.ReadLines(path).Select((x, index) => (index, GetWords(x.ToUpper())));
+            try
+            {
+                var text = await File.ReadAllLinesAsync(path);
+                var lines = text.Select((x, index) => (index, GetWords(x.ToUpper())));
 
                 foreach ((var line, var words) in lines)
                 {
                     foreach (var word in words)
                     {
-                        if(!ignoredWords.Contains(word))
+                        if (!ignoredWords.Contains(word))
                             Add(word, line);
                     }
                 }
-            //}catch(Exception)
-            //{
-            //    throw new Exception("Um erro ocorreu durante a leitura do arquivo");
-            //}
-        }
-
+            }
+            catch(Exception)
+            {
+                throw new Exception($"Um erro ocorreu durante a leitura do arquivo \"{path}\"");
+            }
+}
+        // Adiciona palavra ao $wordsMap
         private void Add(string word, int line)
         {
             if(wordsMap.ContainsKey(word))
             {
-                wordsMap.TryGetValue(word, out SortedSet<int> set);
+                wordsMap.TryGetValue(word, out List<int> set);
 
                 set.Add(line);
             }
             else
-                wordsMap.Add(word, new SortedSet<int>{line});
+                wordsMap.Add(word, new List<int>{line});
         }
 
-        private void readIgnored(string path)
+        // Lê arquivo de palavras a serem ignoradas, converte todas as letras para maiúsculas e as armazena em $ignoredWords
+        private async Task ReadIgnored(string path)
         {
             try
             {
-                var words = GetWords(File.ReadAllText(path).ToUpper());
+                var text = await File.ReadAllTextAsync(path);
+                var words = GetWords(text.ToUpper());
                 ignoredWords = new HashSet<string>(words);
 
             }catch(Exception)
             {
-                throw new Exception("Um erro ocorreu durante a leitura do arquivo");
+                throw new Exception($"Um erro ocorreu durante a leitura do arquivo \"{path}\"");
             }
 }
-
+        // Aguarda o término da leitura dos arquivos e retorna o Output formatado
         public override string ToString()
         {
+            waitRead?.Wait();
             return wordsMap.Aggregate("", 
                 (acc, x) => acc + "\n" + 
-                $"{x.Key} ({x.Value.Count}) {x.Value.Aggregate("", (acc, e) => acc + " " + e)}");
+                $"{x.Key} ({x.Value.Count}) {x.Value.Distinct().Aggregate("", (acc, e) => acc + " " + e)}");
         }
     }
 }

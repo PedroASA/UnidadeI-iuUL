@@ -2,7 +2,7 @@
   "profiles": {
     "Ex2": {
       "commandName": "Project",
-      "commandLineArgs": " \"$(ProjectDir)texto.txt\" \"$(ProjectDir)ignore.txt\" "
+      "commandLineArgs": " \"$(ProjectDir)texto.txt\" \"$(ProjectDir)ignore.txt\" > \"$(ProjectDir)out.txt\" "
     }
   }
 }
